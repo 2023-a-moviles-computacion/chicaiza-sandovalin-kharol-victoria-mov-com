@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "979043159518",
+    "project_id": "a-mov-com-kvcs",
+    "storage_bucket": "a-mov-com-kvcs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:979043159518:android:0d2e0687358a0787ffa14f",
+        "android_client_info": {
+          "package_name": "com.example.movilescomp2023a"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "979043159518-lnvprsjudv86mdpugg8sarv2kuudai6e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMW2vjU0LHLKeip5NcZHpEw0WFWzlM178"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "979043159518-lnvprsjudv86mdpugg8sarv2kuudai6e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
