@@ -181,7 +181,8 @@ fun main() {
                         val id = scanner.nextInt()
                         val cocineroToUpdate = Cocinero.desplegarCocinero().find { it.id == id }
                         if (cocineroToUpdate != null) {
-                            println("Enter the updated details for the Cocinero:")
+                            println("Ingresela informacion actualizada de cicinero" +
+                                    " Cocinero:")
                             println("Nombre:")
                             cocineroToUpdate.nombre = scanner.next()
                             println("Edad:")
@@ -207,30 +208,29 @@ fun main() {
                             }
                             cocineroToUpdate.recetas = recetas.toTypedArray()
 
-                            // Update the Cocinero
                             Cocinero.actualizarCocinero(cocineroToUpdate)
-                            println("Cocinero updated successfully.")
+                            println("Cocinero actualizado.")
                         } else {
-                            println("Cocinero with ID $id not found.")
+                            println("El cocinero con la ID $id indicada no existe.")
                         }
                     }
                     4 -> {
-                        println("Enter the Cocinero ID to delete:")
+                        println("Ingrese el Id del cocinero a borrar:")
                         val id = scanner.nextInt()
                         Cocinero.borrarCocinero(id)
-                        println("Cocinero deleted successfully.")
+                        println("Cocinero borrado de manera exitosa")
                     }
                     else -> {
-                        println("Invalid option.")
+                        println("Opcion invalida.")
                     }
                 }
             }
             0 -> {
-                println("Exiting...")
+                println("Saliendo...")
                 return
             }
             else -> {
-                println("Invalid option.")
+                println("Opcion invalida.")
             }
         }
     }
