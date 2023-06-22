@@ -27,7 +27,7 @@ fun main() {
                     1 -> {
                         println("Ingrese los detalles de la Receta:")
                         println("Nombre:")
-                        val nombre = scanner.next()
+                        val nombre = readLine()
                         println("Porciones:")
                         val porciones = scanner.nextInt()
                         println("Calorias:")
@@ -157,7 +157,7 @@ fun main() {
                     1 -> {
                         println("Enter the Cocinero details:")
                         println("Nombre:")
-                        val nombre = scanner.next()
+                        val nombre = readLine()
                         println("Edad:")
                         val edad = scanner.nextInt()
                         println("Puntuación de clientes:")
@@ -176,6 +176,8 @@ fun main() {
                             println("Do you want to add a Receta? (y/n)")
                             val choice = scanner.next()
                             if (choice.equals("y", ignoreCase = true)) {
+                                val recetasExistentes = Receta.desplegarRecetas()
+                                recetasExistentes.forEach { println(it) }
                                 println("Ingrerse el Id de la receta para agregar:")
                                 val recetaId = scanner.nextInt()
                                 val recetaToAdd = Receta.desplegarRecetas().find { it.id == recetaId }
@@ -280,7 +282,7 @@ fun main() {
                         println("Cocineros existentes:")
                         val cocinerosExistentes = Cocinero.desplegarCocinero()
                         cocinerosExistentes.forEach { println(it) }
-                        
+
                         println("Ingrese el Id del cocinero a borrar:")
                         val id = scanner.nextInt()
                         Cocinero.borrarCocinero(id)
@@ -306,7 +308,7 @@ fun main() {
 
 data class Receta(
     val id: Int,
-    var nombre: String,
+    var nombre: String?,
     var porciones: Int,
     var calorias: Float,
     var creacion: Date,
@@ -315,7 +317,7 @@ data class Receta(
     var preparacion: String
 ) {
     companion object {
-        private const val archivo_recetas = "recetas.txt"
+        private const val archivo_recetas = "C:\\Users\\escritorio.virtual6\\Documents\\GitHub\\chicaiza-sandovalin-kharol-victoria-mov-com\\Tareas\\CRUD_Kotlin_Kharol_Chicaiza\\src\\main\\kotlin\\recetas.txt"
 
         fun desplegarRecetas(): List<Receta> {
             val archivoRecetas = File(archivo_recetas)
@@ -386,7 +388,7 @@ data class Receta(
 
 data class Cocinero(
     val id: Int,
-    var nombre: String,
+    var nombre: String?,
     var edad: Int,
     var costumersScore: Float,
     var fechaIntegracion: Date,
@@ -394,7 +396,7 @@ data class Cocinero(
     var recetas: Array<Receta>
 ) {
     companion object {
-        private const val archivo_cocineros = "cocineros.txt"
+        private const val archivo_cocineros = "C:\\Users\\escritorio.virtual6\\Documents\\GitHub\\chicaiza-sandovalin-kharol-victoria-mov-com\\Tareas\\CRUD_Kotlin_Kharol_Chicaiza\\src\\main\\kotlin\\cocineros.txt"
 
         fun desplegarCocinero(): List<Cocinero> {
             val archivoCocineros = File(archivo_cocineros)

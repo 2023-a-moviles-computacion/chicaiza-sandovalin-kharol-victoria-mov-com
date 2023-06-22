@@ -1,0 +1,1 @@
+{"id":1,"nombre":"pollo a la naranja","porciones":5,"calorias":35.6,"creacion":"May 19, 2023, 12:00:00 AM","facil":true,"ingredientes":["pollo","naranja"],"preparacion":"Preparamos"}
