@@ -11,21 +11,21 @@ fun main() {
 
     while (true) {
         println("Choose an option:")
-        println("1. Manage Recetas")
-        println("2. Manage Cocineros")
+        println("1. Gestionar Recetas")
+        println("2. Gestionar Cocineros")
         println("0. Exit")
 
         when (scanner.nextInt()) {
             1 -> {
-                println("Recetas Management:")
-                println("1. Create Receta")
-                println("2. Display Recetas")
-                println("3. Update Receta")
-                println("4. Delete Receta")
+                println("Gestion de Recetas:")
+                println("1. Ingresar Receta")
+                println("2. Desplegar Recetas")
+                println("3. Actualizar Receta")
+                println("4. Borrar Receta")
 
                 when (scanner.nextInt()) {
                     1 -> {
-                        println("Enter the Receta details:")
+                        println("Ingrese los detalles de la Receta:")
                         println("Nombre:")
                         val nombre = scanner.next()
                         println("Porciones:")
@@ -33,7 +33,10 @@ fun main() {
                         println("Calorias:")
                         val calorias = scanner.nextFloat()
                         println("Fecha de creacion (yyyy-MM-dd):")
-                        val fechaCreacion = Date(scanner.next())
+                        val fechaCreacionString = readLine()
+                        val formato = SimpleDateFormat("yyyy-MM-dd")
+                        val fechaCreacion = formato.parse(fechaCreacionString)
+
                         println("Facil (true/false):")
                         val facil = scanner.nextBoolean()
                         println("Ingredientes (separated by comma):")
@@ -61,63 +64,94 @@ fun main() {
                             println("Recetas:")
                             recetas.forEach { println(it) }
                         } else {
-                            println("No recetas found.")
+                            println("recetas no encontradas.")
                         }
                     }
                     3 -> {
-                        println("Enter the Receta ID to update:")
-                        val id = scanner.nextInt()
-                        val recetaToUpdate = Receta.desplegarRecetas().find { it.id == id }
-                        if (recetaToUpdate != null) {
-                            println("Enter the updated details for the Receta:")
-                            println("Name:")
-                            recetaToUpdate.nombre = scanner.next()
-                            println("Porciones:")
-                            recetaToUpdate.porciones = scanner.nextInt()
-                            println("Calorias:")
-                            recetaToUpdate.calorias = scanner.nextFloat()
-                            println("Fecha de creación (yyyy-MM-dd):")
-                            val creacionSF = scanner.next()
-                            val formato = SimpleDateFormat("yyyy-MM-dd")
-                            recetaToUpdate.creacion = formato.parse(creacionSF)
-                            println("Es la receta facil (true/false):")
-                            recetaToUpdate.facil = scanner.nextBoolean()
-                            println("Numero de ingredientes:")
-                            val numIngredientes = scanner.nextInt()
-                            val ingredientes = mutableListOf<String>()
-                            for (i in 1..numIngredientes) {
-                                println("Ingrediente $i:")
-                                val ingrediente = scanner.next()
-                                ingredientes.add(ingrediente)
-                            }
-                            recetaToUpdate.ingredientes = ingredientes.toTypedArray()
-                            println("Preparacion:")
-                            recetaToUpdate.preparacion = scanner.next()
+                        println("Recetas existentes:")
+                        val recetasExistentes = Receta.desplegarRecetas()
+                        recetasExistentes.forEach { println(it) }
 
-                            // Update the Receta
+                        println("\nIngrese el ID de la receta a actualizar:")
+                        val id = readLine()!!.toInt()
+                        val recetaToUpdate = recetasExistentes.find { it.id == id }
+
+                        if (recetaToUpdate != null) {
+                            println("Ingrese el atributo a actualizar (nombre, porciones, calorias, creacion, facil, ingredientes, preparacion):")
+                            val atributo = readLine()
+
+                            when (atributo) {
+                                "nombre" -> {
+                                    println("Nuevo nombre:")
+                                    recetaToUpdate.nombre = readLine()!!
+                                }
+                                "porciones" -> {
+                                    println("Nuevas porciones:")
+                                    recetaToUpdate.porciones = readLine()!!.toInt()
+                                }
+                                "calorias" -> {
+                                    println("Nuevas calorias:")
+                                    recetaToUpdate.calorias = readLine()!!.toFloat()
+                                }
+                                "creacion" -> {
+                                    println("Fecha de creación (yyyy-MM-dd):")
+                                    val creacionSF = readLine()!!
+                                    val formato = SimpleDateFormat("yyyy-MM-dd")
+                                    recetaToUpdate.creacion = formato.parse(creacionSF)
+                                }
+                                "facil" -> {
+                                    println("Es la receta facil (true/false):")
+                                    recetaToUpdate.facil = readLine()!!.toBoolean()
+                                }
+                                "ingredientes" -> {
+                                    println("Número de ingredientes:")
+                                    val numIngredientes = readLine()!!.toInt()
+                                    val ingredientes = mutableListOf<String>()
+                                    for (i in 1..numIngredientes) {
+                                        println("Ingrediente $i:")
+                                        val ingrediente = readLine()!!
+                                        ingredientes.add(ingrediente)
+                                    }
+                                    recetaToUpdate.ingredientes = ingredientes.toTypedArray()
+                                }
+                                "preparacion" -> {
+                                    println("Nueva preparación:")
+                                    recetaToUpdate.preparacion = readLine()!!
+                                }
+                                else -> {
+                                    println("Atributo no válido.")
+                                    return
+                                }
+                            }
+
                             Receta.actualizarReceta(recetaToUpdate)
-                            println("Receta updated successfully.")
+                            println("Receta actualizada exitosamente.")
                         } else {
-                            println("Receta with ID $id not found.")
+                            println("Receta con el ID $id no encontrada.")
                         }
+
                     }
                     4 -> {
-                        println("Enter the Receta ID to delete:")
+                        println("Recetas existentes:")
+                        val recetasExistentes = Receta.desplegarRecetas()
+                        recetasExistentes.forEach { println(it) }
+
+                        println("Ingrese el ID de la receta a borrar:")
                         val id = scanner.nextInt()
                         Receta.borrarReceta(id)
-                        println("Receta deleted successfully.")
+                        println("Receta borrada exitosamente.")
                     }
                     else -> {
-                        println("Invalid option.")
+                        println("Opcion invalida.")
                     }
                 }
             }
             2 -> {
-                println("Cocineros Management:")
-                println("1. Create Cocinero")
-                println("2. Display Cocineros")
-                println("3. Update Cocinero")
-                println("4. Delete Cocinero")
+                println("Gestion de Cocineros:")
+                println("1. Ingresar Cocinero")
+                println("2. Desplegar Cocineros")
+                println("3. Actulizar Cocinero")
+                println("4. Borrar Cocinero")
 
                 when (scanner.nextInt()) {
                     1 -> {
@@ -129,7 +163,10 @@ fun main() {
                         println("Puntuación de clientes:")
                         val puntuacionClientes = scanner.nextFloat()
                         println("Fecha de integracion (yyyy-MM-dd):")
-                        val fechaIntegracion = Date(scanner.next())
+                        val fechaCreacionString = readLine()
+                        val formato = SimpleDateFormat("yyyy-MM-dd")
+                        val fechaIntegracion = formato.parse(fechaCreacionString)
+
                         println("Autor de la receta (true/false):")
                         val autorReceta = scanner.nextBoolean()
 
@@ -139,14 +176,14 @@ fun main() {
                             println("Do you want to add a Receta? (y/n)")
                             val choice = scanner.next()
                             if (choice.equals("y", ignoreCase = true)) {
-                                println("Enter the Receta ID to add:")
+                                println("Ingrerse el Id de la receta para agregar:")
                                 val recetaId = scanner.nextInt()
                                 val recetaToAdd = Receta.desplegarRecetas().find { it.id == recetaId }
                                 if (recetaToAdd != null) {
                                     recetas.add(recetaToAdd)
-                                    println("Receta added successfully.")
+                                    println("Receta agregada exitosamente.")
                                 } else {
-                                    println("Receta with ID $recetaId not found.")
+                                    println("La receta con el el ID $recetaId no encontrada.")
                                 }
                             } else {
                                 break
@@ -164,7 +201,7 @@ fun main() {
                         )
 
                         Cocinero.crearCocinero(cocinero)
-                        println("Cocinero created successfully.")
+                        println("Cocinero guardado.")
 
                     }
                     2 -> {
@@ -173,48 +210,77 @@ fun main() {
                         println("Cocineros:")
                         cocineros.forEach { println(it) }
                     } else {
-                        println("No cocineros found.")
+                        println("Cocinero no encontrado.")
                     }
                     }
                     3 -> {
-                        println("Enter the Cocinero ID to update:")
-                        val id = scanner.nextInt()
-                        val cocineroToUpdate = Cocinero.desplegarCocinero().find { it.id == id }
+                        println("Cocineros existentes:")
+                        val cocinerosExistentes = Cocinero.desplegarCocinero()
+                        cocinerosExistentes.forEach { println(it) }
+
+                        println("\nIngrese el ID del cocinero para actualizar:")
+                        val id = readLine()!!.toInt()
+                        val cocineroToUpdate = cocinerosExistentes.find { it.id == id }
+
                         if (cocineroToUpdate != null) {
-                            println("Ingresela informacion actualizada de cicinero" +
-                                    " Cocinero:")
-                            println("Nombre:")
-                            cocineroToUpdate.nombre = scanner.next()
-                            println("Edad:")
-                            cocineroToUpdate.edad = scanner.nextInt()
-                            println("Puntuación de clientes:")
-                            cocineroToUpdate.costumersScore = scanner.nextFloat()
-                            println("Fecha de integración (yyyy-MM-dd):")
-                            val integracionSF = scanner.next()
-                            val formato = SimpleDateFormat("yyyy-MM-dd")
-                            cocineroToUpdate.fechaIntegracion = formato.parse(integracionSF)
-                            println("Es el autor de la receta (true/false):")
-                            cocineroToUpdate.autor = scanner.nextBoolean()
-                            println("Número de recetas:")
-                            val numRecetas = scanner.nextInt()
-                            val recetas = mutableListOf<Receta>()
-                            for (i in 1..numRecetas) {
-                                println("Receta $i:")
-                                val recetaId = scanner.nextInt()
-                                val receta = Receta.desplegarRecetas().find { it.id == recetaId }
-                                if (receta != null) {
-                                    recetas.add(receta)
+                            println("Ingrese el atributo a actualizar (nombre, edad, costumersScore, fechaIntegracion, autor, recetas):")
+                            val atributo = readLine()
+
+                            when (atributo) {
+                                "nombre" -> {
+                                    println("Nuevo nombre:")
+                                    cocineroToUpdate.nombre = readLine()!!
+                                }
+                                "edad" -> {
+                                    println("Nueva edad:")
+                                    cocineroToUpdate.edad = readLine()!!.toInt()
+                                }
+                                "costumersScore" -> {
+                                    println("Nueva puntuación de clientes:")
+                                    cocineroToUpdate.costumersScore = readLine()!!.toFloat()
+                                }
+                                "fechaIntegracion" -> {
+                                    println("Fecha de integración (yyyy-MM-dd):")
+                                    val integracionSF = readLine()!!
+                                    val formato = SimpleDateFormat("yyyy-MM-dd")
+                                    cocineroToUpdate.fechaIntegracion = formato.parse(integracionSF)
+                                }
+                                "autor" -> {
+                                    println("Es el autor de la receta (true/false):")
+                                    cocineroToUpdate.autor = readLine()!!.toBoolean()
+                                }
+                                "recetas" -> {
+                                    println("Número de recetas:")
+                                    val numRecetas = readLine()!!.toInt()
+                                    val recetas = mutableListOf<Receta>()
+                                    for (i in 1..numRecetas) {
+                                        println("Receta $i:")
+                                        val recetaId = readLine()!!.toInt()
+                                        val receta = Receta.desplegarRecetas().find { it.id == recetaId }
+                                        if (receta != null) {
+                                            recetas.add(receta)
+                                        }
+                                    }
+                                    cocineroToUpdate.recetas = recetas.toTypedArray()
+                                }
+                                else -> {
+                                    println("Atributo no válido.")
+                                    return
                                 }
                             }
-                            cocineroToUpdate.recetas = recetas.toTypedArray()
 
                             Cocinero.actualizarCocinero(cocineroToUpdate)
                             println("Cocinero actualizado.")
                         } else {
                             println("El cocinero con la ID $id indicada no existe.")
                         }
+
                     }
                     4 -> {
+                        println("Cocineros existentes:")
+                        val cocinerosExistentes = Cocinero.desplegarCocinero()
+                        cocinerosExistentes.forEach { println(it) }
+                        
                         println("Ingrese el Id del cocinero a borrar:")
                         val id = scanner.nextInt()
                         Cocinero.borrarCocinero(id)
