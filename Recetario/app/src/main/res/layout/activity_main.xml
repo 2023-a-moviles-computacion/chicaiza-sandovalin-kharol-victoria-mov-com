@@ -1,0 +1,57 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgHamb"
+        android:layout_width="296dp"
+        android:layout_height="256dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/btnChefs"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.702"
+        app:srcCompat="@drawable/hamburger" />
+
+    <Button
+        android:id="@+id/btnRecetas"
+        android:layout_width="187dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="64dp"
+        android:background="@color/yellow"
+        android:text="Gestor de recetas  ->"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/btnChefs"
+        app:layout_constraintStart_toStartOf="@+id/btnChefs"
+        app:layout_constraintTop_toBottomOf="@+id/imgHamb" />
+
+    <Button
+        android:id="@+id/btnChefs"
+        android:layout_width="155dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="56dp"
+        android:background="@color/yellow"
+        android:text="Gestor de chefs  ->"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgTitulo"
+        android:layout_width="218dp"
+        android:layout_height="221dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnChefs"
+        app:layout_constraintDimensionRatio="H,1:1"
+        app:layout_constraintEnd_toEndOf="@+id/imgHamb"
+        app:layout_constraintHorizontal_bias="0.564"
+        app:layout_constraintStart_toStartOf="@+id/imgHamb"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.118"
+        app:srcCompat="@drawable/title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
