@@ -59,4 +59,24 @@
         tools:layout_editor_absoluteX="150dp"
         tools:layout_editor_absoluteY="130dp" />
 
+    <Button
+        android:id="@+id/btn_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="R VIEW"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_ir_list_view"
+        app:layout_constraintEnd_toStartOf="@+id/btn_ir_list_view"
+        app:layout_constraintTop_toTopOf="@+id/btn_ir_list_view" />
+
+    <Button
+        android:id="@+id/btn_sqlite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:text="SQLITE"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_ciclo_vida"
+        app:layout_constraintEnd_toStartOf="@+id/btn_ciclo_vida"
+        app:layout_constraintTop_toTopOf="@+id/btn_ciclo_vida" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

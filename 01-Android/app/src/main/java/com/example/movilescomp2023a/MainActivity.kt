@@ -7,8 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.ContactsContract.Contacts
+import android.view.ViewParent
 import android.widget.Button
 import androidx.activity.result.contract.ActivityResultContracts
+import java.lang.reflect.Type
 
 // en AppCompatActivity va a estar toda la logica que vemos aqui
 class MainActivity : AppCompatActivity() {
@@ -89,6 +91,15 @@ class MainActivity : AppCompatActivity() {
             .setOnClickListener{
                 abrirActividadConParametros(CIntentExplicitoParametros::class.java)
             }
+        val botonSqlite = findViewById<Button>(R.id.btn_sqlite)
+        botonSqlite.setOnClickListener {
+            irActividad(CRUDEntrenador::class.java)
+        }
+
+        val botonRView = findViewById<Button>(R.id.btn_recycler_view)
+        botonRView.setOnClickListener {
+            irActividad(FRecyclerView::class.java)
+        }
     }
 
     fun abrirActividadConParametros(
