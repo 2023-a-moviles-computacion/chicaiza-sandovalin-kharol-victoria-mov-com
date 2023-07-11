@@ -1,22 +1,20 @@
-package com.example.movilescomp2023a
-
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class ESqliteHelperEntrenador(
+class HelperCocinero(
     contexto : Context?, //debemos pasar el contexto
 ) : SQLiteOpenHelper(
     contexto,
-    "moviles", //nombre de la BDD
+    "recetario", //nombre de la BDD
     null,
     1
 ){
     override fun onCreate(db: SQLiteDatabase?) {
         val scriptSQLCrearTablaEntrenador =
             """
-                    CREATE TABLE ENTRENADOR(
+                    CREATE TABLE COCINEROS(
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     nobre VARCHAR(50),
                     descripcion VARCHAR(50)
@@ -102,21 +100,21 @@ class ESqliteHelperEntrenador(
         val arreglo = arrayListOf<BEntrenador>()
         if(existeUsuario){
             do{
-              val id=resultadoConsultaLectura.getInt(0) //indice 0
-              val nombre =  resultadoConsultaLectura.getString(1)
-              val descripcion = resultadoConsultaLectura.getstring(2)
-              if(id != null){
-                  //llenar el arreglo con un nuevo BEntrenador
-                  usuarioEncontrado.id =id
-                  usuarioEncontrado.nombre = nombre
-                  usuarioEncontrado.descripcion=descripcion
-              }
+                val id=resultadoConsultaLectura.getInt(0) //indice 0
+                val nombre =  resultadoConsultaLectura.getString(1)
+                val descripcion = resultadoConsultaLectura.getstring(2)
+                if(id != null){
+                    //llenar el arreglo con un nuevo BEntrenador
+                    usuarioEncontrado.id =id
+                    usuarioEncontrado.nombre = nombre
+                    usuarioEncontrado.descripcion=descripcion
+                }
 
             } while (resultadoConsultaLectura.moveToNext())
         }
         resultadoConsultaLectura.close()
         baseDatosLectura.close()
         return usuarioEncontrado
-        }
+    }
 
 }

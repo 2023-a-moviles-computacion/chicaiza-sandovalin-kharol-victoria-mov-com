@@ -5,71 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dedbe31b-74cf-4ac9-b1dc-adb0cef179bb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../01-Android/app/EBaseDeDatos.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01-Android/app/ESqliteHelperEntrenador.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01-Android/app/src/main/java/com/example/movilescomp2023a/CRUDEntrenador.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../01-Android/app/src/main/res/layout/activity_crudentrenador.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/Cocinero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/Receta.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/androidTest/java/com/example/recetario/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/Cocinero.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/Cocineros.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/Receta.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/Recetas.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/_60829.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/_66146.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/frente.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/hamburger.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/round_button.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/title.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/layout/activity_cocineros.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/layout/activity_recetas.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/values-night/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/test/java/com/example/recetario/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Recetario/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01-Android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../01-Android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01-Android/app/src/main/java/com/example/movilescomp2023a/CIntentExplicitoParametros.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../01-Android/app/src/main/java/com/example/movilescomp2023a/CIntentExplicitoParametros.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01-Android/app/src/main/java/com/example/movilescomp2023a/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../01-Android/app/src/main/java/com/example/movilescomp2023a/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01-Android/app/src/main/res/layout/activity_cintent_explicito_parametros.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../01-Android/app/src/main/res/layout/activity_cintent_explicito_parametros.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01-Android/app/src/main/res/values-en-land/string LE.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../01-Android/app/src/main/res/values-en-land/string LE.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../01-Android/app/src/main/res/values-es-port/colors PS.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../01-Android/app/src/main/res/values-es-port/colors PS.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Recetario/app/HelperCocinero.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Recetario/app/HelperReceta.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/IngresoRecetas.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/ic_baseline_image_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/layout/activity_ingreso_recetas.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Recetario/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../Recetario/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Recetario/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/Cocinero.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/Cocinero.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/Receta.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/java/com/example/recetario/Receta.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Recetario/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Recetario/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Recetario/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +91,7 @@
       <workItem from="1686259630703" duration="1056000" />
       <workItem from="1687089612979" duration="28574000" />
       <workItem from="1687225249359" duration="9943000" />
-      <workItem from="1688334424763" duration="2020000" />
+      <workItem from="1688334424763" duration="3988000" />
     </task>
     <servers />
   </component>

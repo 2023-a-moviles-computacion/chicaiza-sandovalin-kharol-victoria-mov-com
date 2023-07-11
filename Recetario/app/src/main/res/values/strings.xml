@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Recetario</string>
+    <string name="name">Nombre</string>
+    <string name="edad">Edad</string>
+    <string name="costumerScore">Puntuacion del cliente</string>
+    <string name="fechaIntegracion">Fecha de integracion</string>
+    <string name="autor">Autor</string>
+    <string name="recetas">Recetas</string>
+    <string name="porciones">Porciones</string>
+    <string name="calorias">Calorias</string>
+    <string name="creacion">Fecha de creacion</string>
+    <string name="iacil">Es la receta facil</string>
+    <string name="ingredientes">Ingredientes</string>
+    <string name="preparacion">Preparacion</string>
 </resources>
