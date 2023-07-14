@@ -8,76 +8,91 @@
 
     <EditText
         android:id="@+id/etFechaIntegracion"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="320dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="132dp"
         android:ems="10"
         android:hint="dd-mm-yyyy"
         android:inputType="text"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="232dp" />
+        app:layout_constraintEnd_toEndOf="@+id/etNombreC"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etNombreC"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreC" />
 
     <RadioButton
-        android:id="@+id/rbtAutorSi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Si"
-        tools:layout_editor_absoluteX="94dp"
-        tools:layout_editor_absoluteY="352dp" />
+        android:id="@+id/rbtAutorNo"
+        android:layout_width="61dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="276dp"
+        android:text="No"
+        app:layout_constraintEnd_toEndOf="@+id/etNombreC"
+        app:layout_constraintHorizontal_bias="0.803"
+        app:layout_constraintStart_toStartOf="@+id/etNombreC"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreC" />
 
     <TextView
         android:id="@+id/textView18"
         android:layout_width="102dp"
         android:layout_height="39dp"
+        android:layout_marginTop="208dp"
         android:text="Es el autor?"
         android:textColor="@color/black"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="309dp" />
+        app:layout_constraintEnd_toEndOf="@+id/etNombreC"
+        app:layout_constraintHorizontal_bias="0.009"
+        app:layout_constraintStart_toStartOf="@+id/etNombreC"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreC" />
 
     <RadioButton
-        android:id="@+id/rbtAutorNo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No"
-        tools:layout_editor_absoluteX="219dp"
-        tools:layout_editor_absoluteY="352dp" />
-
-    <EditText
-        android:id="@+id/etNombreC"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="Nombre"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="103dp" />
-
-    <EditText
-        android:id="@+id/etEdad"
-        android:layout_width="125dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="Edad"
-        android:inputType="text"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="164dp" />
+        android:id="@+id/rbtAutorSi"
+        android:layout_width="55dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="116dp"
+        android:text="Si"
+        app:layout_constraintBottom_toBottomOf="@+id/rbtAutorNo"
+        app:layout_constraintEnd_toStartOf="@+id/rbtAutorNo"
+        app:layout_constraintTop_toTopOf="@+id/rbtAutorNo"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/etCostumerScore"
         android:layout_width="125dp"
         android:layout_height="50dp"
+        android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="Score"
         android:inputType="text"
-        tools:layout_editor_absoluteX="219dp"
-        tools:layout_editor_absoluteY="164dp" />
+        app:layout_constraintEnd_toEndOf="@+id/etNombreC"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/etNombreC"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreC" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView3"
-        android:layout_width="299dp"
-        android:layout_height="188dp"
-        tools:layout_editor_absoluteX="45dp"
-        tools:layout_editor_absoluteY="452dp" />
+    <EditText
+        android:id="@+id/etNombreC"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.234" />
+
+    <EditText
+        android:id="@+id/etEdad"
+        android:layout_width="125dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:hint="Edad"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/etNombreC"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etNombreC"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreC" />
 
     <Button
         android:id="@+id/btnGuardarC"
@@ -86,8 +101,12 @@
         android:background="@color/yellow"
         android:text="Guardar"
         android:textColor="@color/white"
-        tools:layout_editor_absoluteX="239dp"
-        tools:layout_editor_absoluteY="660dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.909" />
 
     <ImageButton
         android:id="@+id/imbBackCV"
@@ -95,19 +114,10 @@
         android:layout_height="50dp"
         app:layout_constraintBottom_toTopOf="@+id/etNombreC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471"
+        app:layout_constraintVertical_bias="0.134"
         app:srcCompat="@drawable/baseline_arrow_back_24" />
-
-    <TextView
-        android:id="@+id/textView19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Elija sus recetas"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="44dp"
-        tools:layout_editor_absoluteY="398dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

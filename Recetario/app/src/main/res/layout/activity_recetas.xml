@@ -10,14 +10,15 @@
         android:id="@+id/btnAgregarC"
         android:layout_width="74dp"
         android:layout_height="74dp"
-        android:layout_marginBottom="24dp"
         android:background="@drawable/round_button"
         android:text="+"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:rippleColor="@color/yellow"
-        tools:layout_editor_absoluteX="168dp" />
+        app:layout_constraintEnd_toEndOf="@+id/lvRecetas"
+        app:layout_constraintStart_toStartOf="@+id/lvRecetas"
+        app:layout_constraintTop_toBottomOf="@+id/lvRecetas"
+        app:rippleColor="@color/yellow" />
 
     <ImageButton
         android:id="@+id/btnEditR"
@@ -35,15 +36,18 @@
         android:id="@+id/textView"
         android:layout_width="147dp"
         android:layout_height="44dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="228dp"
         android:layout_marginBottom="32dp"
         android:text="Recetas"
         android:textColor="@color/black"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/_dynamic"
-        app:layout_constraintEnd_toEndOf="@+id/_dynamic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/_dynamic" />
+        app:layout_constraintStart_toStartOf="@+id/_dynamic"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -57,7 +61,7 @@
         app:srcCompat="@drawable/delete" />
 
     <ImageButton
-        android:id="@+id/imbRegresarR"
+        android:id="@+id/imbRegresarRC"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="100dp"
@@ -76,5 +80,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.458" />
+
+    <ImageButton
+        android:id="@+id/ibRegresarHR"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAgregarC"
+        app:layout_constraintEnd_toStartOf="@+id/btnAgregarC"
+        app:layout_constraintTop_toTopOf="@+id/btnAgregarC"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

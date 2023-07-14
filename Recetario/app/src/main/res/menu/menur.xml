@@ -3,12 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/miEditarC"
+        android:id="@+id/mi_editar_receta"
         android:title="Editar" />
     <item
-        android:id="@+id/miBorrarC"
+        android:id="@+id/mi_eliminar_receta"
         android:title="Eliminar" />
-    <item
-        android:id="@+id/miRecetas"
-        android:title="Recetas" />
 </menu>

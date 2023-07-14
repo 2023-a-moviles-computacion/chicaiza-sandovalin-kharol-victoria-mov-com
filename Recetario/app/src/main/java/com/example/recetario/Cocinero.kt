@@ -12,7 +12,7 @@ data class Cocinero(
     var costumersScore: Float,
     var fechaIntegracion: Date,
     var autor: Boolean,
-    var recetas: ArrayList<Receta>
+    var recetas: ArrayList<Receta>?
 ) {
     override fun toString(): String {
         val formato = SimpleDateFormat("yyyy-MM-dd")
