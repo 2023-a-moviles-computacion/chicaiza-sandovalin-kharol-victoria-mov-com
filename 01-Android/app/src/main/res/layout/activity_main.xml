@@ -46,13 +46,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="36dp"
         android:text="I.Explicito"
-        app:layout_constraintBottom_toTopOf="@+id/btn.ir.intent.implicito"
-        app:layout_constraintEnd_toEndOf="@+id/btn.ir.intent.implicito"
+        app:layout_constraintBottom_toTopOf="@+id/btn_ir_intent_implicito"
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_intent_implicito"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/btn.ir.intent.implicito" />
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_intent_implicito" />
 
     <Button
-        android:id="@+id/btn.ir.intent.implicito"
+        android:id="@+id/btn_ir_intent_implicito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="I.Implicito"

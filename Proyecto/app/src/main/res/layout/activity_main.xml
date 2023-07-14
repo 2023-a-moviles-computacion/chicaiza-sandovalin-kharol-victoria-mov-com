@@ -7,12 +7,55 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="12dp"
+        android:text="MEDEASY"
+        android:textColor="@color/skyblue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="59dp"
+        android:layout_height="47dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="251dp"
+        android:layout_height="260dp"
+        app:srcCompat="@drawable/two_people"
+        tools:layout_editor_absoluteX="80dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="267dp"
+        android:layout_height="61dp"
+        android:text="Consult with Specailized Doctors In a Multi-Speciality Hospital"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="516dp" />
+
+    <Button
+        android:id="@+id/btnAgendar"
+        android:layout_width="272dp"
+        android:layout_height="47dp"
+        android:background="@drawable/boton_comun"
+        android:text="Agendar"
+        android:textColor="@color/white"
+        app:cornerRadius="20dp"
+        tools:layout_editor_absoluteX="69dp"
+        tools:layout_editor_absoluteY="608dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

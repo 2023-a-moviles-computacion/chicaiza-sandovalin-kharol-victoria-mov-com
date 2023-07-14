@@ -12,4 +12,5 @@
     <string name="iacil">Es la receta facil</string>
     <string name="ingredientes">Ingredientes</string>
     <string name="preparacion">Preparacion</string>
+    <string name="title_activity_nuevo_cocinero">Nuevo_cocinero</string>
 </resources>

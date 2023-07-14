@@ -7,43 +7,74 @@
     tools:context=".Recetas">
 
     <Button
-        android:id="@+id/btnAgregarR"
+        android:id="@+id/btnAgregarC"
         android:layout_width="74dp"
         android:layout_height="74dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/round_button"
         android:text="+"
         android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.911"
-        app:rippleColor="@color/yellow" />
+        app:rippleColor="@color/yellow"
+        tools:layout_editor_absoluteX="168dp" />
 
     <ImageButton
         android:id="@+id/btnEditR"
-        android:layout_width="48dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="100dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAgregarR"
-        app:layout_constraintStart_toEndOf="@+id/btnAgregarR"
-        app:layout_constraintTop_toTopOf="@+id/btnAgregarR"
-        app:layout_constraintVertical_bias="0.421"
-        app:srcCompat="@drawable/_66146" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnAgregarC"
+        app:layout_constraintStart_toEndOf="@+id/btnAgregarC"
+        app:layout_constraintTop_toTopOf="@+id/btnAgregarC"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/pencil" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="147dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="32dp"
+        android:text="Recetas"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
+        app:layout_constraintEnd_toEndOf="@+id/_dynamic"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/_dynamic" />
 
     <ImageButton
-        android:id="@+id/btnBorrarR"
-        android:layout_width="58dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="40dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAgregarR"
-        app:layout_constraintEnd_toStartOf="@+id/btnAgregarR"
-        app:layout_constraintTop_toTopOf="@+id/btnAgregarR"
-        app:layout_constraintVertical_bias="0.45"
-        app:srcCompat="@drawable/_60829" />
+        android:id="@+id/imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAgregarC"
+        app:layout_constraintStart_toEndOf="@+id/btnAgregarC"
+        app:layout_constraintTop_toTopOf="@+id/btnAgregarC"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/delete" />
+
+    <ImageButton
+        android:id="@+id/imbRegresarR"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="100dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnAgregarC"
+        app:layout_constraintEnd_toStartOf="@+id/btnAgregarC"
+        app:layout_constraintTop_toTopOf="@+id/btnAgregarC"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/baseline_arrow_back_24" />
+
+    <ListView
+        android:id="@+id/lvRecetas"
+        android:layout_width="359dp"
+        android:layout_height="502dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

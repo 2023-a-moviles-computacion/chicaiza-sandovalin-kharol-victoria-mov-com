@@ -16,11 +16,7 @@ class MainActivity : AppCompatActivity() {
             .setOnClickListener {
                 irActividad(Cocineros::class.java)
             }
-        val botonRecetas = findViewById<Button>(R.id.btnRecetas)
-        botonRecetas
-            .setOnClickListener {
-                irActividad(Recetas::class.java)
-            }
+
     }
 
     fun irActividad(
