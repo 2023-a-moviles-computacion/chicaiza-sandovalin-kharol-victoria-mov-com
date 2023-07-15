@@ -16,8 +16,14 @@ import android.widget.ListView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
 
 class Recetas : AppCompatActivity() {
+
+    var arregloRecetas: ArrayList<Receta>? = null
+    private lateinit var adaptador: ArrayAdapter<Receta>
+    var recetaSeleccionada = 0
+    var cocineroSeleccionado=0
 
     val callbackContenidoCIntentExplicito =
         registerForActivityResult(
@@ -27,15 +33,38 @@ class Recetas : AppCompatActivity() {
             if(result.resultCode== Activity.RESULT_OK){
                 if(result.data !=null){
                     val data= result.data
-                    "${data?.getStringExtra("recetaModificado")}"
+                    val nombreModificado = data?.getStringExtra("nombreModificado")
+                    val porcionesModificado = data?.getIntExtra("porcionesModificado", 0)
+                    val caloriasModificado = data?.getFloatExtra("caloriasModificado", 0.0f)
+                    val dateModificado = data?.getStringExtra("dateModificado")
+                    val facilModificado = data?.getBooleanExtra("facilModificado",false)
+                    val formato = SimpleDateFormat("yyyy-MM-dd")
+                    val fechaF = formato.parse(dateModificado)
+                    val ingredientesModificado = data?.getStringExtra("ingredientesModificado")
+                    val preparacionModificado = data?.getStringExtra("preparacionModificado")
+
+                    val ingredientes = ingredientesModificado?.split(", ")?.toTypedArray()
+                    var receta = Receta(
+                        recetaSeleccionada+1,
+                    nombreModificado,
+                    porcionesModificado,
+                    caloriasModificado,
+                        fechaF,
+                    facilModificado,
+                        ingredientes,
+                    preparacionModificado)
+
+
+                    BaseCocineros.arregloCocineros[cocineroSeleccionado]?.recetas?.set(recetaSeleccionada,
+                        receta
+                    )
+                    adaptador.notifyDataSetChanged()
+
                 }
             }
         }
 
-    var arregloRecetas: ArrayList<Receta>? = null
-    private lateinit var adaptador: ArrayAdapter<Receta>
-    var recetaSeleccionada = 0
-    var cocineroSeleccionado=0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,7 +133,7 @@ class Recetas : AppCompatActivity() {
         return when (item.itemId){
             R.id.mi_editar_receta ->{
                 "${recetaSeleccionada}"
-                abrirActividadConParametros(editar_recetas::class.java,recetaSeleccionada)
+                abrirActividadConParametros(editar_recetas::class.java,recetaSeleccionada,cocineroSeleccionado)
                 return true
             }
             R.id.mi_eliminar_receta ->{
@@ -132,10 +161,11 @@ class Recetas : AppCompatActivity() {
     }
 
     fun abrirActividadConParametros(
-        clase: Class<*>, cocineroSeleccionado:Int
+        clase: Class<*>, recetaSeleccionado:Int,cocineroSeleccionado:Int
     ){
         val intentExplito= Intent(this,clase)
         intentExplito.putExtra("cocinero",cocineroSeleccionado)
+        intentExplito.putExtra("receta",recetaSeleccionado)
 
         callbackContenidoCIntentExplicito.launch(intentExplito)
 

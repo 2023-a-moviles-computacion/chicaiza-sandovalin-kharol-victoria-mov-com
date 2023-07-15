@@ -25,31 +25,33 @@ class editar_cocinero : AppCompatActivity() {
         val nombreText = findViewById<EditText>(R.id.etENombre)
         val nombreInicial = cocinero.nombre.toString()
         nombreText.setText(nombreInicial)
-        val nombre = nombreText.text.toString()
+
 
         //edad
         val edadText = findViewById<EditText>(R.id.edEEdad)
         val edadInicial = cocinero.edad.toString()
         edadText.setText(edadInicial)
-        val edad = edadText.text.toString()
+
 
         //costumerScore
         val scoreText = findViewById<EditText>(R.id.etEPuntuacion)
         val scoreInicial = cocinero.costumersScore.toString()
         scoreText.setText(scoreInicial)
-        val score = scoreText.text.toString()
+
 
         //fecha integracion
         val fechaText = findViewById<EditText>(R.id.etEFecha)
-        val fechaInicial = cocinero.fechaIntegracion.toString()
+        val formato = SimpleDateFormat("yy-MM-dd")
+        val fechaInicial = formato.format(cocinero.fechaIntegracion)
         fechaText.setText(fechaInicial)
-        val fecha = fechaText.text.toString()
+
+
 
         //autor
         val autorText = findViewById<EditText>(R.id.etEAutor)
         val autorInicial = cocinero.autor.toString()
         autorText.setText(autorInicial)
-        val autor = autorText.text.toString()
+
 
         val botonRegresarECH = findViewById<ImageButton>(R.id.imbERegresar)
         botonRegresarECH
@@ -59,6 +61,12 @@ class editar_cocinero : AppCompatActivity() {
         val botonEditarC = findViewById<Button>(R.id.btnEditar)
         botonEditarC
             .setOnClickListener {
+                val nombre = nombreText.text.toString()
+                val edad = edadText.text.toString()
+                val score = scoreText.text.toString()
+                val fecha = fechaText.text.toString()
+                val autor = autorText.text.toString()
+
                 val nuevococinero = BaseCocineros.arregloCocineros[id]
                 nuevococinero.nombre=nombre
                 nuevococinero.edad = edad.toInt()
@@ -67,7 +75,7 @@ class editar_cocinero : AppCompatActivity() {
                 val fechaF = formato.parse(fecha)
                 nuevococinero.fechaIntegracion =fechaF
                 nuevococinero.autor = autor.toBoolean()
-                BaseCocineros.arregloCocineros[id] = nuevococinero
+
                 val intentDevolverParametros = Intent()
                 intentDevolverParametros.putExtra("nombreModificado",nombre)
                 intentDevolverParametros.putExtra("edadModificado",edad.toInt())
@@ -80,7 +88,7 @@ class editar_cocinero : AppCompatActivity() {
                     intentDevolverParametros
                 )
                 finish()
-                irActividad(Cocineros::class.java)
+
             }
 
     }

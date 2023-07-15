@@ -20,18 +20,6 @@
         app:layout_constraintTop_toBottomOf="@+id/lvRecetas"
         app:rippleColor="@color/yellow" />
 
-    <ImageButton
-        android:id="@+id/btnEditR"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="100dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAgregarC"
-        app:layout_constraintStart_toEndOf="@+id/btnAgregarC"
-        app:layout_constraintTop_toTopOf="@+id/btnAgregarC"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/pencil" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="147dp"
@@ -48,17 +36,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/_dynamic"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="28dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnAgregarC"
-        app:layout_constraintStart_toEndOf="@+id/btnAgregarC"
-        app:layout_constraintTop_toTopOf="@+id/btnAgregarC"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/delete" />
 
     <ImageButton
         android:id="@+id/imbRegresarRC"

@@ -90,7 +90,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="dd-mm-yyyy"
+        android:hint="yyyy-mm-dd"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="@+id/etPorciones"
         app:layout_constraintHorizontal_bias="0.0"

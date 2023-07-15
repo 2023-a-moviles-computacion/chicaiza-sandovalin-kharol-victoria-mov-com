@@ -47,7 +47,7 @@ class Cocineros : AppCompatActivity() {
                     cocinero.costumersScore=scoreModificado
                     cocinero.fechaIntegracion=fechaF
                     cocinero.autor=autorModificado
-
+                    BaseCocineros.arregloCocineros[cocineroSeleccionado] = cocinero
 
                     adaptador.notifyDataSetChanged()
                 }

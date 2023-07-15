@@ -30,7 +30,7 @@ class BaseCocineros {
                 Cocinero(1, "Grodon Ramsay", 25, 4.5f, fechaIntegracion, true, recetas1)
             )
             arregloCocineros.add(
-                Cocinero(2, "Carolina Herrera", 30, 3.8f, Date(), false, recetas2)
+                Cocinero(2, "Carolina Herrera", 30, 3.8f, fechaIntegracion, false, recetas2)
             )
             arregloCocineros.add(
                 Cocinero(3, "Parmenidez Castro", 28, 4.2f, Date(), true, recetas3)

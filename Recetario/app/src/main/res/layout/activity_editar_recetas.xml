@@ -14,10 +14,10 @@
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/btnEditar2"
-        app:layout_constraintEnd_toEndOf="@+id/btnEditar2"
+        app:layout_constraintBottom_toTopOf="@+id/btnEditarR"
+        app:layout_constraintEnd_toEndOf="@+id/btnEditarR"
         app:layout_constraintHorizontal_bias="0.488"
-        app:layout_constraintStart_toStartOf="@+id/btnEditar2" />
+        app:layout_constraintStart_toStartOf="@+id/btnEditarR" />
 
     <EditText
         android:id="@+id/edEPorciones"
@@ -71,7 +71,7 @@
         app:srcCompat="@drawable/baseline_arrow_back_24" />
 
     <Button
-        android:id="@+id/btnEditar2"
+        android:id="@+id/btnEditarR"
         android:layout_width="175dp"
         android:layout_height="54dp"
         android:background="@color/yellow"
