@@ -17,6 +17,7 @@ import android.widget.ListView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
 
 class Cocineros : AppCompatActivity() {
     private lateinit var adaptador: ArrayAdapter<Cocinero>
@@ -36,13 +37,18 @@ class Cocineros : AppCompatActivity() {
                     val scoreModificado = data?.getFloatExtra("scoreModificado", 0.0f)
                     val dateModificado = data?.getStringExtra("dateModificado")
                     val autorModificado = data?.getBooleanExtra("autorModificado",false)
+                    val formato = SimpleDateFormat("yyyy-MM-dd")
+                    val fechaF = formato.parse(dateModificado)
 
                     // Update the corresponding Cocinero object in the arregloCocineros list
                     val cocinero = arregloCocineros[cocineroSeleccionado]
                     cocinero.nombre = nombreModificado
                     cocinero.edad = edadModificado
+                    cocinero.costumersScore=scoreModificado
+                    cocinero.fechaIntegracion=fechaF
+                    cocinero.autor=autorModificado
 
-                    adaptador.notifyDataSetChanged()
+
                     adaptador.notifyDataSetChanged()
                 }
             }

@@ -8,10 +8,10 @@ import java.util.*
 data class Cocinero(
     val id: Int,
     var nombre: String?,
-    var edad: Int,
-    var costumersScore: Float,
-    var fechaIntegracion: Date,
-    var autor: Boolean,
+    var edad: Int?,
+    var costumersScore: Float?,
+    var fechaIntegracion: Date?,
+    var autor: Boolean?,
     var recetas: ArrayList<Receta>?
 ) {
     override fun toString(): String {
