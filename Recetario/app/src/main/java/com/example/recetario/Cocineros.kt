@@ -31,7 +31,19 @@ class Cocineros : AppCompatActivity() {
             if(result.resultCode== Activity.RESULT_OK){
                 if(result.data !=null){
                     val data= result.data
-                    "${data?.getStringExtra("cocineroModificado")}"
+                    val nombreModificado = data?.getStringExtra("nombreModificado")
+                    val edadModificado = data?.getIntExtra("edadModificado", 0)
+                    val scoreModificado = data?.getFloatExtra("scoreModificado", 0.0f)
+                    val dateModificado = data?.getStringExtra("dateModificado")
+                    val autorModificado = data?.getBooleanExtra("autorModificado",false)
+
+                    // Update the corresponding Cocinero object in the arregloCocineros list
+                    val cocinero = arregloCocineros[cocineroSeleccionado]
+                    cocinero.nombre = nombreModificado
+                    cocinero.edad = edadModificado
+
+                    adaptador.notifyDataSetChanged()
+                    adaptador.notifyDataSetChanged()
                 }
             }
         }
@@ -47,7 +59,7 @@ class Cocineros : AppCompatActivity() {
         adaptador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            arregloCocineros
+            BaseCocineros.arregloCocineros
         )
         listView.adapter = adaptador
         adaptador.notifyDataSetChanged()

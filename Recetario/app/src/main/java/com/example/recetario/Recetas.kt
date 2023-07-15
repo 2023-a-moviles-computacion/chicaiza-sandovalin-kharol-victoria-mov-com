@@ -35,16 +35,15 @@ class Recetas : AppCompatActivity() {
     var arregloRecetas: ArrayList<Receta>? = null
     private lateinit var adaptador: ArrayAdapter<Receta>
     var recetaSeleccionada = 0
+    var cocineroSeleccionado=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recetas)
         //recibir el parametro
-        val cocineroSeleccionado = intent.getIntExtra("id", 0)
-        val cocinero = BaseCocineros.arregloCocineros.find { it.id == cocineroSeleccionado }
+         cocineroSeleccionado = intent.getIntExtra("id", 0)
+        val cocinero = BaseCocineros.arregloCocineros.find { it.id == cocineroSeleccionado+1 }
         arregloRecetas = cocinero?.recetas ?: arrayListOf()
-        arregloRecetas = cocinero?.recetas ?: arrayListOf()
-        Log.d("Recetas", "Recetas: $arregloRecetas")
 
         //Crea el list view y el adaptador
         val listView = findViewById<ListView>(R.id.lvRecetas)
@@ -110,7 +109,7 @@ class Recetas : AppCompatActivity() {
             }
             R.id.mi_eliminar_receta ->{
                 "${recetaSeleccionada}"
-                abrirDialogo(recetaSeleccionada)
+                abrirDialogo(cocineroSeleccionado,recetaSeleccionada)
                 return true
             }
             else -> return super.onContextItemSelected(item)
@@ -118,11 +117,11 @@ class Recetas : AppCompatActivity() {
 
     }
 
-    fun abrirDialogo(cocineroIndex: Int) {
+    fun abrirDialogo(cocineroIndex: Int,recetaIndex: Int) {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Desea eliminar")
         builder.setPositiveButton("Aceptar") { dialog, which ->
-            BaseCocineros.arregloCocineros.removeAt(cocineroIndex)
+            BaseCocineros.arregloCocineros[cocineroIndex]?.recetas?.removeAt(recetaIndex)
             adaptador.notifyDataSetChanged()
             dialog.dismiss()
         }
