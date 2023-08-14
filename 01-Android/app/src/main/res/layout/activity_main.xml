@@ -63,12 +63,11 @@
         android:id="@+id/btn_recycler_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="8dp"
         android:text="R VIEW"
         app:layout_constraintBottom_toBottomOf="@+id/btn_ir_list_view"
         app:layout_constraintEnd_toStartOf="@+id/btn_ir_list_view"
-        app:layout_constraintTop_toTopOf="@+id/btn_ir_list_view"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/btn_ir_list_view" />
 
     <Button
         android:id="@+id/btn_sqlite"
@@ -79,14 +78,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_ciclo_vida"
         app:layout_constraintEnd_toStartOf="@+id/btn_ciclo_vida"
         app:layout_constraintTop_toTopOf="@+id/btn_ciclo_vida" />
-
-    <Button
-        android:id="@+id/btn_google_map"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:text="B maps"
-        app:layout_constraintEnd_toStartOf="@+id/btn_ir_intent_explicito"
-        app:layout_constraintTop_toTopOf="@+id/btn_ir_intent_explicito" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
