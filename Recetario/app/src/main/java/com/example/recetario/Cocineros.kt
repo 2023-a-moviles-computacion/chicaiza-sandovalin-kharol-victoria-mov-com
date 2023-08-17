@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.ListView
@@ -21,8 +22,10 @@ import java.text.SimpleDateFormat
 
 class Cocineros : AppCompatActivity() {
     private lateinit var adaptador: ArrayAdapter<Cocinero>
-    val arregloCocineros= BaseCocineros.arregloCocineros
+
     var cocineroSeleccionado = 0
+    var cocineroList = BaseDatos.tablaCocinero?.retrieveAllCocineros() ?: emptyList()
+    var list=cocineroList.toList()
 
     val callbackContenidoCIntentExplicito =
         registerForActivityResult(
@@ -40,16 +43,38 @@ class Cocineros : AppCompatActivity() {
                     val formato = SimpleDateFormat("yyyy-MM-dd")
                     val fechaF = formato.parse(dateModificado)
 
-                    // Update the corresponding Cocinero object in the arregloCocineros list
-                    val cocinero = arregloCocineros[cocineroSeleccionado]
-                    cocinero.nombre = nombreModificado
-                    cocinero.edad = edadModificado
-                    cocinero.costumersScore=scoreModificado
-                    cocinero.fechaIntegracion=fechaF
-                    cocinero.autor=autorModificado
-                    BaseCocineros.arregloCocineros[cocineroSeleccionado] = cocinero
+                    val nombre =  nombreModificado.toString()
+                    val edad = edadModificado
+                    val costumersScore = scoreModificado
+                    val fechaIntegracion= dateModificado.toString()
+                    var autor= autorModificado.toString().toBoolean()
 
+
+                    // Update the corresponding Cocinero object in the arregloCocineros list
+                    val id= cocineroSeleccionado
+
+                    BaseDatos.tablaCocinero!!.actualizarCocineroFormulario(
+
+                        nombre,
+                        edad,
+                        costumersScore,
+                        fechaIntegracion,
+                        autor,
+                        id
+                    )
+
+                    cocineroList = BaseDatos.tablaCocinero?.retrieveAllCocineros() ?: emptyList()
+                    for (cocinero in cocineroList) {
+                        println("ID: ${cocinero.id}")
+                        println("Nombre: ${cocinero.nombre}")
+                        println("Edad: ${cocinero.edad}")
+                        // Print other properties
+                        println("-----------------------")
+                    }
+                    list=cocineroList.toList()
                     adaptador.notifyDataSetChanged()
+                    irActividad(Cocineros::class.java)
+
                 }
             }
         }
@@ -60,12 +85,13 @@ class Cocineros : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cocineros)
 
-        //Crea el list view y el adaptador
+
+// Create the list view and the adapter
         val listView = findViewById<ListView>(R.id.lvCocineros)
         adaptador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            BaseCocineros.arregloCocineros
+            list// Convert ArrayList to List
         )
         listView.adapter = adaptador
         adaptador.notifyDataSetChanged()
@@ -110,7 +136,8 @@ class Cocineros : AppCompatActivity() {
         //obtener el id del Arraylist seleccionado
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
         val id = info.position
-        cocineroSeleccionado=id
+
+        cocineroSeleccionado=id+1
     }
 
 
@@ -141,9 +168,15 @@ class Cocineros : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Desea eliminar")
         builder.setPositiveButton("Aceptar") { dialog, which ->
-            BaseCocineros.arregloCocineros.removeAt(cocineroIndex)
+            val id = cocineroIndex
+            BaseDatos.tablaCocinero!!.eliminarCocineroFormulario(
+                id
+            )
+//            BaseCocineros.arregloCocineros.removeAt(cocineroIndex)
             adaptador.notifyDataSetChanged()
             dialog.dismiss()
+            irActividad(Cocineros::class.java)
+
         }
         builder.setNegativeButton("Cancelar", null)
 

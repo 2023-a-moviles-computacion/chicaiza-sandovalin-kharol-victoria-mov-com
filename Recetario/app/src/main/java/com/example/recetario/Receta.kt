@@ -6,20 +6,19 @@ import java.util.*
 import com.google.gson.Gson
 
 class Receta(
-    val id: Int,
+    var id: Int,
+    var foranea: Int?,
     var nombre: String?,
     var porciones: Int?,
     var calorias: Float?,
-    var creacion: Date?,
+    var creacion: String?,
     var facil: Boolean?,
-    var ingredientes: Array<String>?,
+    var ingredientes: String?,
     var preparacion: String?
 ) {
 
 
     override fun toString(): String {
-        val formato = SimpleDateFormat("yyyy-MM-dd")
-        val fecha = formato.format(creacion)
-        return "Receta ${id} \nNombre: ${nombre} \nFecha de creación: ${fecha} \nPorciones: ${porciones} \nCalorías: ${calorias} \nFácil: ${facil} \nIngredientes: ${ingredientes?.joinToString(", ")} \nPreparación: ${preparacion}"
+        return "Receta ${id} \nNombre: ${nombre} \nFecha de creación: ${creacion} \nPorciones: ${porciones} \nCalorías: ${calorias} \nFácil: ${facil} \nIngredientes: ${ingredientes} \nPreparación: ${preparacion}"
     }
 }

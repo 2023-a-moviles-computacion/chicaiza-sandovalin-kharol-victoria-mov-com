@@ -26,32 +26,36 @@ class ingreso_cocineros : AppCompatActivity() {
         val botonAnadirC = findViewById<Button>(R.id.btnGuardarC)
         botonAnadirC
             .setOnClickListener{
-                val nombre = findViewById<EditText>(R.id.etNombreC)
-                val edad = findViewById<EditText>(R.id.etEdad)
-                val score = findViewById<EditText>(R.id.etCostumerScore)
-                val inputFecha = findViewById<EditText>(R.id.etFechaIntegracion)
-                val fechaString = inputFecha.text.toString()
+                val nombre1 = findViewById<EditText>(R.id.etNombreC)
+                val edad1 = findViewById<EditText>(R.id.etEdad)
+                val score1 = findViewById<EditText>(R.id.etCostumerScore)
+                val inputFecha1 = findViewById<EditText>(R.id.etFechaIntegracion)
+
+                val nombre =  nombre1.text.toString()
+                val edad = edad1.text.toString().toInt()
+                val costumersScore = score1.text.toString().toFloat()
+                val fechaIntegracion= inputFecha1.text.toString()
+
 
                 // Create a SimpleDateFormat to parse the date input
                 val dateFormat = SimpleDateFormat("yyyy-MM-dd")
-                val fechaIntegracion: Date = try {
-                    dateFormat.parse(fechaString)
-                } catch (e: Exception) {
-                    Date()
-                }
 
                 val check= findViewById<RadioButton>(R.id.rbtAutorSi)
-                val autor = if(check.isChecked){
+                var autor=false
+                 autor = if(check.isChecked){
                     true
                 }else{
                     false
                 }
-                val recetas = ArrayList<Receta>()
 
 
-                val cocinero = Cocinero(nextId, nombre.text.toString(),edad.text.toString().toInt(),score.text.toString().toFloat(),fechaIntegracion,autor,recetas)
-                BaseCocineros.arregloCocineros.add(cocinero)
-                nextId  ++
+               // val cocinero = Cocinero(nextId, nombre.text.toString(),edad.text.toString().toInt(),score.text.toString().toFloat(),fechaString,autor)
+               // BaseCocineros.arregloCocineros.add(cocinero)
+                BaseDatos.tablaReceta!!.crearReceta(1,"Arroz", 3,300.2f,"12-05-2023",true,"arroz, ajo, agua","llenar una olla de agua y cuando hierva agragar el ajo y la sal, dejar reposar por cicno minutos y agregar el arroz a llama baja")
+
+                BaseDatos.tablaCocinero!!.crearCocinero(
+                    nombre,edad,costumersScore,fechaIntegracion,autor
+                )
 
                 irActividad(Cocineros::class.java)
             }
