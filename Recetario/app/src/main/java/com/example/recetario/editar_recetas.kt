@@ -16,12 +16,14 @@ class editar_recetas : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_editar_recetas)
         //recibir el parametro
-        cocineroSeleccionado = intent.getIntExtra("cocinero", 0)
-        recetaSeleccionado = intent.getIntExtra("receta", 0)
+        cocineroSeleccionado = intent.getIntExtra("cocinero", 1)
+        recetaSeleccionado = intent.getIntExtra("receta", 1)
         val cocinero = BaseCocineros.arregloCocineros.find { it.id == cocineroSeleccionado+1 }
-        arregloRecetas = cocinero?.recetas ?: arrayListOf()
+
         var nextId = arregloRecetas?.size?.plus(1) ?: 1
-        val receta=arregloRecetas?.get(recetaSeleccionado)
+       // val receta=arregloRecetas?.get(recetaSeleccionado)
+        val receta=BaseDatos.tablaReceta!!.consultarRecetaPorID(recetaSeleccionado)
+
 
         //nombre
         val nombreText = findViewById<EditText>(R.id.etENombreR)
@@ -42,8 +44,7 @@ class editar_recetas : AppCompatActivity() {
 
         //fecha integracion
         val fechaText = findViewById<EditText>(R.id.etEFechaCreacion)
-        val formato = SimpleDateFormat("yy-MM-dd")
-        val fechaInicial = formato.format(receta?.creacion)
+        val fechaInicial = receta?.creacion.toString()
         fechaText.setText(fechaInicial)
 
 
@@ -55,7 +56,7 @@ class editar_recetas : AppCompatActivity() {
 
         //Ingredientes
         val ingreText = findViewById<EditText>(R.id.etEIngredientes)
-        val ingreInicial = receta?.ingredientes?.joinToString(", ")
+        val ingreInicial = receta?.ingredientes.toString()
         ingreText.setText(ingreInicial)
 
 
@@ -110,4 +111,6 @@ class editar_recetas : AppCompatActivity() {
         val intent= Intent(this,clase)
         startActivity(intent)
     }
+
+
 }

@@ -22,8 +22,11 @@ class Recetas : AppCompatActivity() {
 
     var arregloRecetas: ArrayList<Receta>? = null
     private lateinit var adaptador: ArrayAdapter<Receta>
+
     var recetaSeleccionada = 0
     var cocineroSeleccionado=0
+    var recetasList = BaseDatos.tablaReceta?.consultarRecetasPorForanea(cocineroSeleccionado) ?: emptyList()
+
 
     val callbackContenidoCIntentExplicito =
         registerForActivityResult(
@@ -33,6 +36,7 @@ class Recetas : AppCompatActivity() {
             if(result.resultCode== Activity.RESULT_OK){
                 if(result.data !=null){
                     val data= result.data
+                    val foraneaModificado = data?.getIntExtra("foraneaModificado", 0)
                     val nombreModificado = data?.getStringExtra("nombreModificado")
                     val porcionesModificado = data?.getIntExtra("porcionesModificado", 0)
                     val caloriasModificado = data?.getFloatExtra("caloriasModificado", 0.0f)
@@ -43,22 +47,35 @@ class Recetas : AppCompatActivity() {
                     val ingredientesModificado = data?.getStringExtra("ingredientesModificado")
                     val preparacionModificado = data?.getStringExtra("preparacionModificado")
 
-                    val ingredientes = ingredientesModificado?.split(", ")?.toTypedArray()
+                    val ingredientes = ingredientesModificado
                     var receta = Receta(
-                        recetaSeleccionada+1,
+                        recetaSeleccionada,
+                        foraneaModificado,
                     nombreModificado,
                     porcionesModificado,
                     caloriasModificado,
-                        fechaF,
+                        dateModificado,
                     facilModificado,
                         ingredientes,
                     preparacionModificado)
+                    BaseDatos.tablaReceta!!.actualizarRecetaFormulario(
 
-
-                    BaseCocineros.arregloCocineros[cocineroSeleccionado]?.recetas?.set(recetaSeleccionada,
-                        receta
+                        cocineroSeleccionado,
+                        nombreModificado.toString(),
+                        porcionesModificado.toString().toInt(),
+                        caloriasModificado.toString().toFloat(),
+                        dateModificado.toString(),
+                        facilModificado.toString().toBoolean(),
+                        ingredientes.toString(),
+                        preparacionModificado.toString(),
+                        recetaSeleccionada
                     )
-                    adaptador.notifyDataSetChanged()
+
+
+                    //adaptador.notifyDataSetChanged()
+                    var id=cocineroSeleccionado
+                    abrirActividadConParametro(Recetas::class.java,cocineroSeleccionado)
+
 
                 }
             }
@@ -70,17 +87,22 @@ class Recetas : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recetas)
         //recibir el parametro
-         cocineroSeleccionado = intent.getIntExtra("id", 0)
-        val cocinero = BaseCocineros.arregloCocineros.find { it.id == cocineroSeleccionado+1 }
-        arregloRecetas = cocinero?.recetas ?: arrayListOf()
+         cocineroSeleccionado = intent.getIntExtra("id", 1)
+        //val cocinero = BaseCocineros.arregloCocineros.find { it.id == cocineroSeleccionado+1 }
+
 
         //Crea el list view y el adaptador
         val listView = findViewById<ListView>(R.id.lvRecetas)
-        adaptador = ArrayAdapter(
+// Call the function to retrieve Receta objects
+         recetasList = BaseDatos.tablaReceta?.consultarRecetasPorForanea(cocineroSeleccionado) ?: emptyList()
+        println("si llega a esta parte")
+// Create the adapter
+        val adaptador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            arregloRecetas!!
+            recetasList.toList()
         )
+
         listView.adapter = adaptador
         adaptador.notifyDataSetChanged()
         registerForContextMenu(listView)
@@ -126,7 +148,7 @@ class Recetas : AppCompatActivity() {
         //obtener el id del Arraylist seleccionado
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
         val id = info.position
-        recetaSeleccionada=id
+        recetaSeleccionada=id+1
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
@@ -150,9 +172,14 @@ class Recetas : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Desea eliminar")
         builder.setPositiveButton("Aceptar") { dialog, which ->
-            BaseCocineros.arregloCocineros[cocineroIndex]?.recetas?.removeAt(recetaIndex)
-            adaptador.notifyDataSetChanged()
+            val id = recetaIndex
+            BaseDatos.tablaReceta!!.eliminarRecetaFormulario(
+                id.toString().toInt()
+            )
+            //adaptador.notifyDataSetChanged()
             dialog.dismiss()
+            abrirActividadConParametro(Recetas::class.java,cocineroSeleccionado)
+
         }
         builder.setNegativeButton("Cancelar", null)
 
@@ -166,6 +193,15 @@ class Recetas : AppCompatActivity() {
         val intentExplito= Intent(this,clase)
         intentExplito.putExtra("cocinero",cocineroSeleccionado)
         intentExplito.putExtra("receta",recetaSeleccionado)
+
+        callbackContenidoCIntentExplicito.launch(intentExplito)
+
+    }
+    fun abrirActividadConParametro(
+        clase: Class<*>, cocineroSeleccionado:Int
+    ){
+        val intentExplito= Intent(this,clase)
+        intentExplito.putExtra("id",cocineroSeleccionado)
 
         callbackContenidoCIntentExplicito.launch(intentExplito)
 

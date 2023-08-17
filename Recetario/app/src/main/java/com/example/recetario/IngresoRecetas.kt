@@ -20,10 +20,9 @@ class IngresoRecetas : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ingreso_recetas)
         //recibir el parametro
-        cocineroSeleccionado = intent.getIntExtra("id", 0)
+        cocineroSeleccionado = intent.getIntExtra("id", 1)
         val cocinero = BaseCocineros.arregloCocineros.find { it.id == cocineroSeleccionado+1 }
-        arregloRecetas = cocinero?.recetas ?: arrayListOf()
-        var nextId = arregloRecetas?.size?.plus(1) ?: 1
+
 
 
         val botonRegresarVr = findViewById<ImageButton>(R.id.imbRegresarV)
@@ -34,6 +33,7 @@ class IngresoRecetas : AppCompatActivity() {
         val botonAnadirR = findViewById<Button>(R.id.btnGuardarR)
         botonAnadirR
             .setOnClickListener{
+                val foranea= cocineroSeleccionado
                 val nombre = findViewById<EditText>(R.id.etNombre)
                 val porciones = findViewById<EditText>(R.id.etPorciones)
                 val calorias = findViewById<EditText>(R.id.etCalorias)
@@ -54,14 +54,13 @@ class IngresoRecetas : AppCompatActivity() {
                 }else{
                     false
                 }
-                val input = findViewById<EditText>(R.id.etIngredientes)
-                val ingredientes = input.text.toString().split(", ").toTypedArray()
+                val ingredientes = findViewById<EditText>(R.id.etIngredientes)
 
                 val preparacion = findViewById<EditText>(R.id.etPreparacion)
 
-                val receta = Receta(nextId, nombre.text.toString(),porciones.text.toString().toInt(),calorias.text.toString().toFloat(),fechaIntegracion,facil,ingredientes,preparacion.text.toString())
-                BaseCocineros.arregloCocineros[cocineroSeleccionado].recetas?.add(receta)
-                nextId  ++
+                BaseDatos.tablaReceta!!.crearReceta(
+                    foranea,nombre.text.toString(),porciones.text.toString().toInt(),calorias.text.toString().toFloat(),fechaString,facil,ingredientes.text.toString(),preparacion.text.toString()
+                )
 
                 irActividad(Recetas::class.java)
             }

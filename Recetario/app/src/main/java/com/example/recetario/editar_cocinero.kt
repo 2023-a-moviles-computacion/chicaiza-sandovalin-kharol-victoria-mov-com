@@ -19,7 +19,7 @@ class editar_cocinero : AppCompatActivity() {
         //recibir parametros
         val id = intent.getIntExtra("id",0)
 
-        val cocinero=arregloCocineros.get(id)
+        val cocinero=BaseDatos.tablaCocinero!!.consultarCocineroPorID(id)
 
         //nombre
         val nombreText = findViewById<EditText>(R.id.etENombre)
@@ -41,8 +41,7 @@ class editar_cocinero : AppCompatActivity() {
 
         //fecha integracion
         val fechaText = findViewById<EditText>(R.id.etEFecha)
-        val formato = SimpleDateFormat("yy-MM-dd")
-        val fechaInicial = formato.format(cocinero.fechaIntegracion)
+        val fechaInicial = cocinero.fechaIntegracion.toString()
         fechaText.setText(fechaInicial)
 
 
@@ -67,14 +66,7 @@ class editar_cocinero : AppCompatActivity() {
                 val fecha = fechaText.text.toString()
                 val autor = autorText.text.toString()
 
-                val nuevococinero = BaseCocineros.arregloCocineros[id]
-                nuevococinero.nombre=nombre
-                nuevococinero.edad = edad.toInt()
-                nuevococinero.costumersScore = score.toFloat()
-                val formato = SimpleDateFormat("yyyy-MM-dd")
-                val fechaF = formato.parse(fecha)
-                nuevococinero.fechaIntegracion =fechaF
-                nuevococinero.autor = autor.toBoolean()
+
 
                 val intentDevolverParametros = Intent()
                 intentDevolverParametros.putExtra("nombreModificado",nombre)

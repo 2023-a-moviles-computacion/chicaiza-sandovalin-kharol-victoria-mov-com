@@ -10,6 +10,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        BaseDatos.tablaCocinero = SQLHelperCocinero(applicationContext)
+        BaseDatos.tablaReceta = SQLHelperRecetas(applicationContext)
 
         val botonChefs = findViewById<Button>(R.id.btnChefs)
         botonChefs
