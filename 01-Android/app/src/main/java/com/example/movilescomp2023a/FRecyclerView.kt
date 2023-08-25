@@ -1,4 +1,4 @@
-package com.example.movilescomp2023a
+package com.example.movilescomputacion2023a
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class FRecyclerView : AppCompatActivity() {
     var totalLikes = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_frecycler_view)
@@ -15,16 +16,26 @@ class FRecyclerView : AppCompatActivity() {
 
     fun aumentarTotalLikes(){
         totalLikes = totalLikes + 1
-        val totalLikesTextView = findViewById<TextView>(R.id.tv_total_likes)
+        val totalLikesTextView = findViewById<TextView>(
+            R.id.tv_total_likes
+        )
         totalLikesTextView.text = totalLikes.toString()
     }
 
+
+
+
+
+
+
+
+
     fun inicializarRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_entrenadores)
-        val adaptador =FRecyclerViewAdaptadorNombreDescripcion(
-            this,
-            BBaseDatosMemoria.arregloBEntrenador,
-            recyclerView
+        val adaptador = FRecyclerViewAdaptadorNombreDescripcion(
+            this, // Contexto
+            BBaseDatosMemoria.arregloBEntrenador, // Arreglo datos
+            recyclerView // Recycler view
         )
         recyclerView.adapter = adaptador
         recyclerView.itemAnimator = androidx.recyclerview.widget
@@ -34,3 +45,9 @@ class FRecyclerView : AppCompatActivity() {
         adaptador.notifyDataSetChanged()
     }
 }
+
+
+
+
+
+

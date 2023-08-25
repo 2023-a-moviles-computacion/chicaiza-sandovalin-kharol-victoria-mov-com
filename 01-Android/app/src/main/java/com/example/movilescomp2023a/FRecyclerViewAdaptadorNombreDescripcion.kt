@@ -1,4 +1,4 @@
-package com.example.movilescomp2023a
+package com.example.movilescomputacion2023a
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,12 +7,12 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class FRecyclerViewAdaptadorNombreDescripcion (
-    private val contexto : FRecyclerView,
-    private val lista : ArrayList<BEntrenador>,
+class FRecyclerViewAdaptadorNombreDescripcion(
+    private val contexto: FRecyclerView,
+    private val lista: ArrayList<BEntrenador>,
     private val recyclerView: RecyclerView
-    ): RecyclerView.Adapter<FRecyclerViewAdaptadorNombreDescripcion.MyViewHolder>() {
-    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
+): RecyclerView.Adapter<FRecyclerViewAdaptadorNombreDescripcion.MyViewHolder>() {
+    inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nombreTextView: TextView
         val descripcionTextView: TextView
         val likesTextView: TextView
@@ -25,27 +25,13 @@ class FRecyclerViewAdaptadorNombreDescripcion (
             accionButton = view.findViewById<Button>(R.id.btn_dar_like)
             accionButton.setOnClickListener { anadirLike() }
         }
-
         fun anadirLike(){
-            numeroLikes = numeroLikes +1
+            numeroLikes =  numeroLikes + 1
             likesTextView.text = numeroLikes.toString()
             contexto.aumentarTotalLikes()
         }
-
     }
-    //setear el layout que vamos a usar
-    //override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        // itemView = LayoutInflater
-   // }
-    //setear datos para iteacion
-    //override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-    // en la posicion cero se ponen los datos en la lista, se toma el view holder y se toman los textview de lotas las casiilas, llemandole con sus valores respectivos,
-    // //likes siempre va a iniciar en cero
-    // llenar los datos con datos
-
-    //}
-    //tama;o del arreglo
-
+    // Setear el layout que vamos a utilizar
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater
             .from(parent.context)
@@ -56,19 +42,16 @@ class FRecyclerViewAdaptadorNombreDescripcion (
             )
         return MyViewHolder(itemView)
     }
-
-    override fun getItemCount(): Int {
-        return this.lista.size
-    }
-
+    // Setear los datos para la iteracion
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val entrenadorActual = this.lista[position]
         holder.nombreTextView.text = entrenadorActual.nombre
         holder.descripcionTextView.text = entrenadorActual.descripcion
         holder.likesTextView.text = "0"
         holder.accionButton.text = "ID:${entrenadorActual.id} Nombre:${entrenadorActual.nombre}"
-
     }
-
-
+    // tamano del arreglo
+    override fun getItemCount(): Int {
+        return this.lista.size
+    }
 }

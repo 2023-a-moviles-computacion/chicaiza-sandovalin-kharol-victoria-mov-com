@@ -1,17 +1,16 @@
-package com.example.movilescomp2023a
+package com.example.movilescomputacion2023a
 
 class BBaseDatosMemoria {
     companion object {
         val arregloBEntrenador = arrayListOf<BEntrenador>()
-
         init {
             arregloBEntrenador
                 .add(
-                    BEntrenador(1, "Denis", "denis@epn.com")
+                    BEntrenador(1, "Adrian", "a@a.com")
                 )
             arregloBEntrenador
                 .add(
-                    BEntrenador(2, "David", "b@b.com")
+                    BEntrenador(2,"Vicente", "b@b.com")
                 )
             arregloBEntrenador
                 .add(

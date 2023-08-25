@@ -1,11 +1,11 @@
-package com.example.movilescomp2023a
+package com.example.movilescomputacion2023a
 
 class BEntrenador(
-    var id:Int,
+    var id: Int,
     var nombre: String?,
-    var descripcion: String?,
+    var descripcion: String?
 ){
     override fun toString(): String {
-        return "${nombre} - ${descripcion}"
+        return "${nombre} -  ${descripcion}"
     }
 }

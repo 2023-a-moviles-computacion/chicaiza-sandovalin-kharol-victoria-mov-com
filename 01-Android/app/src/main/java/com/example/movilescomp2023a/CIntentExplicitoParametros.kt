@@ -1,4 +1,4 @@
-package com.example.movilescomp2023a
+package com.example.movilescomputacion2023a
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,20 +9,18 @@ class CIntentExplicitoParametros : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cintent_explicito_parametros)
-        //recibir los parametros que llegaron
         val nombre = intent.getStringExtra("nombre")
         val apellido = intent.getStringExtra("apellido")
-        val edad = intent.getIntExtra("edad",0)
+        val edad = intent.getIntExtra("edad", 0)
 
         val boton = findViewById<Button>(R.id.btn_devolver_respuesta)
         boton
             .setOnClickListener { devolverRespuesta() }
     }
-
     fun devolverRespuesta(){
         val intentDevolverParametros = Intent()
-        intentDevolverParametros.putExtra("nombreModificado","Pamela")
-        intentDevolverParametros.putExtra("edadModificado",33)
+        intentDevolverParametros.putExtra("nombreModificado", "Vicente")
+        intentDevolverParametros.putExtra("edadModificado", 33)
         setResult(
             RESULT_OK,
             intentDevolverParametros

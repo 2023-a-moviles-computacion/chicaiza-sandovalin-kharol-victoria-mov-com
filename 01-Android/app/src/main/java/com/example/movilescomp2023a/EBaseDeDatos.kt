@@ -1,7 +1,7 @@
-package com.example.movilescomp2023a
+package com.example.movilescomputacion2023a
 
 class EBaseDeDatos {
     companion object{
-        var tablaEntrenador:ESqliteHelperEntrenador? = null
+        var tablaEntrenador: ESqliteHelperEntrenador? = null
     }
 }

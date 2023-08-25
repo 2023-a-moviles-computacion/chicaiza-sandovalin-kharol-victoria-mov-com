@@ -1,14 +1,13 @@
-package com.example.movilescomp2023a
+package com.example.movilescomputacion2023a
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.movilescomp2023a.databinding.ActivityAacicloVidaBinding
+import com.example.movilescomputacion2023a.databinding.ActivityAacicloVidaBinding
 
 class AACicloVida : AppCompatActivity() {
 
@@ -16,11 +15,12 @@ class AACicloVida : AppCompatActivity() {
     private lateinit var binding: ActivityAacicloVidaBinding
 
     var textoGlobal = ""
+
     fun mostrarSnackbar(texto:String){
         textoGlobal += texto
         Snackbar.make(findViewById(R.id.cl_ciclo_vida),
-        textoGlobal, Snackbar.LENGTH_LONG)
-            .setAction("Action",null).show()
+            textoGlobal, Snackbar.LENGTH_LONG)
+            .setAction("Action", null).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +40,7 @@ class AACicloVida : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
         mostrarSnackbar("OnCreate")
-    }
+    } // onCreate fin de bloque de codigo
     override fun onStart() {
         super.onStart()
         mostrarSnackbar( "onStart")
@@ -55,7 +55,7 @@ class AACicloVida : AppCompatActivity() {
     }
     override fun onPause() {
         super.onPause()
-        mostrarSnackbar("onPauseonPause")
+        mostrarSnackbar("onPause")
     }
     override fun onStop() {
         super.onStop()
@@ -67,27 +67,53 @@ class AACicloVida : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.run{
-            //GUARDAR LAS VARIABLES
-            //PRIMITIVOS
-            putString("texto Guardado", textoGlobal)
-        //putInt("numeroGuardado",numero)
+        outState.run {
+            // GUARDAR LAS VARIABLES
+            // PRIMITIVOS
+            putString("textoGuardado", textoGlobal)
+            //putInt("numeroGuardado", numero)
         }
         super.onSaveInstanceState(outState)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-
-        //RECUPERAR LAS VARIABLES
-        //PRIMITIVOS
+        // RECUPERAR LAS VARIABLES
+        // PRIMITIVOS
         val textoRecuperado:String? = savedInstanceState.getString("textoGuardado")
-        //val rextoRecuperado:Int? = savedInstanceState.getInt("numeroGuardado")
-        if(textoRecuperado != null){
-            mostrarSnackbar(textoRecuperado)
-            textoGlobal = textoRecuperado
+        // val textoRecuperado:Int? = savedInstanceState.getInt("numeroGuardado")
+        if(textoRecuperado!= null){
+                mostrarSnackbar(textoRecuperado)
+                textoGlobal = textoRecuperado
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_aaciclo_vida)
