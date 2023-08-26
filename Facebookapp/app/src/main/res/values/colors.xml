@@ -6,6 +6,6 @@
     <color name="colorPrimaryDark">#324d87</color>
     <color name="colorAccent">#FF4081</color>
     <color name="grey">#8b8b8b</color>
-    <color name="dark_gery">#696969</color>
+    <color name="dark_grey">#696969</color>
     <color name="light_grey">#e4e4e4</color>
 </resources>

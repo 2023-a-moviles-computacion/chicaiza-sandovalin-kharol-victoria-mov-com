@@ -22,14 +22,6 @@ class FRecyclerView : AppCompatActivity() {
         totalLikesTextView.text = totalLikes.toString()
     }
 
-
-
-
-
-
-
-
-
     fun inicializarRecyclerView(){
         val recyclerView = findViewById<RecyclerView>(R.id.rv_entrenadores)
         val adaptador = FRecyclerViewAdaptadorNombreDescripcion(
