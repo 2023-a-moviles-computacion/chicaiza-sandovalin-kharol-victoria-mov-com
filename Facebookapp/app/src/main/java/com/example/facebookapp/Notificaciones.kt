@@ -6,24 +6,21 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
+class Notificaciones : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_notificaciones)
         inicializarRecyclerView()
-
-        val botonInicio = findViewById<Button>(R.id.btnInicio)
+        val botonInicio = findViewById<Button>(R.id.btnInicioNot)
         botonInicio
             .setOnClickListener {
                 irActividad(MainActivity::class.java)
             }
-        val botonNotificaciones = findViewById<Button>(R.id.btnNotificaciones)
+        val botonNotificaciones = findViewById<Button>(R.id.btnNotificacionesNot)
         botonNotificaciones
             .setOnClickListener {
                 irActividad(Notificaciones::class.java)
             }
-
-
     }
 
     fun irActividad(
@@ -34,10 +31,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun inicializarRecyclerView(){
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val adaptador = RecyclerViewAdaptador(
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewNot)
+        val adaptador = ReciclerViewNotificaciones(
             this, // Contexto
-            BaseDatos.arregloPosts, // Arreglo datos
+            BaseDatos.arregloNotificaciones, // Arreglo datos
             recyclerView // Recycler view
         )
         recyclerView.adapter = adaptador
@@ -47,4 +44,5 @@ class MainActivity : AppCompatActivity() {
             .LinearLayoutManager(this)
         adaptador.notifyDataSetChanged()
     }
+
 }

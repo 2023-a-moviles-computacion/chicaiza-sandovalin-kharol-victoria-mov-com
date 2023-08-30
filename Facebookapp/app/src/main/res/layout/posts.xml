@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <RelativeLayout
         android:id="@+id/rellay1"
         android:layout_marginTop="15dp"
@@ -100,6 +100,7 @@
             android:textColor="@color/black"
             android:textSize="13sp"/>
     </RelativeLayout>
+
     <ImageView
         android:id="@+id/imgViewLinea"
         android:layout_width="match_parent"
@@ -108,14 +109,16 @@
         android:layout_marginTop="10dp"
         android:background="@color/light_grey"/>
     <LinearLayout
+        android:id="@+id/botones"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_below="@+id/imgViewLinea">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imgViewLinea"
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:layout_height="50dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -141,7 +144,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:layout_height="50dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -167,7 +170,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:layout_height="50dp">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -191,5 +194,8 @@
         </RelativeLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"/>
 
 </RelativeLayout>

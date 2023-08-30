@@ -7,9 +7,81 @@
     android:background="@color/light_grey"
     tools:context=".MainActivity">
 
+        <RelativeLayout
+            android:id="@+id/topLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:gravity="left"
+                android:text="Facebook"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="4dp"/>
+
+
+            <View
+                android:id="@+id/blueBox"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@id/textView"
+                android:background="@color/white" />
+
+
+            <LinearLayout
+                android:id="@+id/buttonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/blueBox"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/btnInicio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Inicio"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginEnd="2dp"/>
+
+                <Button
+                    android:id="@+id/btnNotificaciones"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Notificaciones"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginStart="2dp"/>
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/grayBox"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_below="@id/buttonsLayout"
+                android:background="@color/light_grey" />
+
+        </RelativeLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/topLayout"
+        android:background="@color/white"/>
+
 </RelativeLayout>
