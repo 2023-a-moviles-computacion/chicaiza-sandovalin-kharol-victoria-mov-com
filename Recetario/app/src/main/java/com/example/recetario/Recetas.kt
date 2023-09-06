@@ -16,6 +16,8 @@ import android.widget.ListView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 
 class Recetas : AppCompatActivity() {
@@ -36,8 +38,9 @@ class Recetas : AppCompatActivity() {
             if(result.resultCode== Activity.RESULT_OK){
                 if(result.data !=null){
                     val data= result.data
-                    val foraneaModificado = data?.getIntExtra("foraneaModificado", 0)
                     val nombreModificado = data?.getStringExtra("nombreModificado")
+                    /*val foraneaModificado = data?.getIntExtra("foraneaModificado", 0)
+
                     val porcionesModificado = data?.getIntExtra("porcionesModificado", 0)
                     val caloriasModificado = data?.getFloatExtra("caloriasModificado", 0.0f)
                     val dateModificado = data?.getStringExtra("dateModificado")
@@ -70,11 +73,11 @@ class Recetas : AppCompatActivity() {
                         preparacionModificado.toString(),
                         recetaSeleccionada
                     )
-
-
+*/
+                    consultarReceta(adaptador)
                     //adaptador.notifyDataSetChanged()
-                    var id=cocineroSeleccionado
-                    abrirActividadConParametro(Recetas::class.java,cocineroSeleccionado)
+                    //var id=cocineroSeleccionado
+                    //abrirActividadConParametro(Recetas::class.java,cocineroSeleccionado)
 
 
                 }
@@ -90,7 +93,7 @@ class Recetas : AppCompatActivity() {
          cocineroSeleccionado = intent.getIntExtra("id", 1)
         //val cocinero = BaseCocineros.arregloCocineros.find { it.id == cocineroSeleccionado+1 }
 
-
+/*
         //Crea el list view y el adaptador
         val listView = findViewById<ListView>(R.id.lvRecetas)
 // Call the function to retrieve Receta objects
@@ -106,7 +109,18 @@ class Recetas : AppCompatActivity() {
         listView.adapter = adaptador
         adaptador.notifyDataSetChanged()
         registerForContextMenu(listView)
+*/
+        val listView=findViewById<ListView>(R.id.lvRecetas)
+        adaptador = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            BaseDatos.recetasFire
+        )
+        listView.adapter = adaptador
+        adaptador.notifyDataSetChanged()
 
+        consultarReceta(adaptador)
+        registerForContextMenu(listView)
 
         // Ir a crear receta
         val botonCrearReceta = findViewById<Button>(R.id.btnAgregarC)
@@ -173,9 +187,10 @@ class Recetas : AppCompatActivity() {
         builder.setTitle("Desea eliminar")
         builder.setPositiveButton("Aceptar") { dialog, which ->
             val id = recetaIndex
-            BaseDatos.tablaReceta!!.eliminarRecetaFormulario(
+            /*BaseDatos.tablaReceta!!.eliminarRecetaFormulario(
                 id.toString().toInt()
-            )
+            )*/
+            eliminarRegistro(id)
             //adaptador.notifyDataSetChanged()
             dialog.dismiss()
             abrirActividadConParametro(Recetas::class.java,cocineroSeleccionado)
@@ -216,6 +231,56 @@ class Recetas : AppCompatActivity() {
             intentDevolverParametros
         )
         finish()
+    }
+
+    fun limpiarArreglo(){
+        BaseDatos.recetasFire.clear()
+    }
+
+    fun consultarReceta(
+        adaptador:ArrayAdapter<Receta>
+    ){
+        val db= Firebase.firestore
+        val recetasRefUnico =db.collection("recetas")
+        limpiarArreglo()
+        adaptador.notifyDataSetChanged()
+        recetasRefUnico
+            .get()
+            .addOnSuccessListener { querySnapshot->
+                for (document in querySnapshot) {
+                    var chef = (document.data?.get("foranea") as String?)?.toInt()
+                    if (cocineroSeleccionado ==chef ){
+                    BaseDatos.recetasFire
+                        .add(
+                            Receta(
+                                document.id.toInt(),
+                                (document.data?.get("foranea") as String?)?.toInt(),
+                                document.data?.get("nombre") as String?,
+                                (document.data?.get("porciones") as String?)?.toInt(),
+                                (document.data?.get("calorias") as String?)?.toFloat(),
+                                document.data?.get("creacion") as String?,
+                                (document.data?.get("facil") as String?).toBoolean(),
+                                document.data?.get("ingredientes") as String?,
+                                document.data?.get("preparacion") as String?
+                            )
+                        )
+                }
+                }
+                adaptador.notifyDataSetChanged()
+            }
+            .addOnFailureListener {  }
+
+    }
+
+    fun eliminarRegistro(id:Int){
+        var cadena="${id}"
+        val db = Firebase.firestore
+        val refReceta= db.collection("recetas")
+        refReceta
+            .document(cadena)
+            .delete()
+            .addOnCompleteListener{  }
+            .addOnFailureListener {  }
     }
 
 
